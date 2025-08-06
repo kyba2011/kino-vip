@@ -1,0 +1,268 @@
+/*
+ * Searched.css
+ * Стили для страницы поиска фильмов
+ */
+.movie-title-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  max-width: 225px;
+}
+
+.selects-mob {
+  display: none;
+  margin: 0 auto;
+  border-radius: 10px;
+  padding: 4px 10px;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.selects-mob select {
+  box-shadow:  0 0 10px 3px rgba(184, 184, 184, 0.1);
+
+}
+
+.not-a {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.53);
+  margin-top: 20px;
+}
+
+.searchPage {
+  margin: 0px 0px 34px 70px;
+  padding: 30px 35px;
+
+}
+
+@media (max-width: 1364px) {
+  .cards-movie-s {
+    padding: 29px 29px;
+    gap: 18px;
+  }
+
+  .card-movie {
+    width: 265px;
+    height: 280px;
+  }
+
+  /* .text-movie {
+    padding: 15px 20px;
+  } */
+
+  .text-movie-s h3 {
+    font-size: 14px;
+  }
+
+  .text-movie-s p {
+    font-size: 14px;
+    max-width: 174px;
+  }
+
+  .raiting-min-s {
+    display: flex;
+    font-weight: 700;
+  }
+
+  .raiting-min-s span {
+    font-size: 12px;
+    margin-top: 3px;
+  }
+
+}
+
+@media (max-width: 1312px) {
+  .cards-movie-s {
+    padding: 26px 26px;
+    gap: 17px;
+  }
+
+  .card-movie {
+    width: 250px;
+    height: 270px;
+  }
+
+
+
+}
+
+@media (max-width: 1240px) {
+
+  .card-movie-s {
+    width: 240px;
+    height: 270px;
+  }
+
+  .text-movie-s {
+    padding: 10px 20px;
+  }
+
+  .text-movie-s p {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .cards-movie-s {
+    padding: 23px 23px;
+    gap: 16px;
+
+  }
+
+  .card-movie-s {
+    width: 230px;
+    height: 260px;
+  }
+
+  .text-movie-s {
+    padding: 8px 18px;
+  }
+}
+
+@media (max-width: 1154px) {
+  .cards-movie-s {
+    padding: 20px 20px;
+    gap: 15px;
+  }
+
+  .card-movie-s {
+    width: 220px;
+    height: 250px;
+  }
+
+  .text-movie-s {
+    padding: 8px 16px;
+  }
+}
+
+@media (max-width: 1104px) {
+  .cards-movie {
+    max-width: 770px;
+    margin: 20px;
+    padding: 25px;
+    gap: 20px;
+    margin: 20px auto;
+  }
+}
+
+@media (max-width: 930px) {
+  .cards-movie-s {
+    gap: 15px;
+    padding: 17px;
+  }
+}
+
+@media (max-width: 903px) {
+  .card-movie-s {
+    width: 210px;
+    height: 240px;
+  }
+}
+
+@media (max-width: 890px) {
+  .cards-movie-s {
+    max-width: 550px;
+    width: 100%;
+    margin: 20px auto;
+    justify-content: center;
+  }
+
+}
+
+@media (max-width: 890px) {
+  .searchPage {
+    margin: auto 140px;
+    padding: 35px 0px;
+  }
+}
+
+@media (max-width: 748px) {
+  .searchPage {
+    margin: auto 100px;
+    padding: 30px 0px;
+  }
+
+  .results h2 {
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .cards-movie-s {
+    max-width: 100%;
+    width: 100%;
+    padding: 20px;
+    gap: 15px;
+    justify-content: center;
+  }
+}
+
+
+@media (max-width: 628px) {
+  .cards-movie-s {
+    max-width: 100%;
+    width: 100%;
+    padding: 15px;
+    gap: 10px;
+    justify-content: center;
+  }
+
+}
+
+@media (max-width: 499px) {
+  .searchPage {
+    margin: auto 90px;
+    padding: 30px 0px;
+  }
+
+  .results h2 {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .cards-movie-s {
+    max-width: 100%;
+    width: 100%;
+    padding: 10px;
+    gap: 10px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 469px) {
+  .searchPage {
+    margin: auto 40px;
+    padding: 30px 10px;
+  }
+
+  .cards-movie-s {
+    max-width: 100%;
+    width: 100%;
+    padding: 5px;
+    gap: 5px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 444px) {
+  .searchPage {
+    margin: auto 40px;
+    padding: 70px 10px;
+  }
+
+  .cards-movie-s {
+    max-width: 100%;
+    width: 100%;
+    padding: 0px;
+    gap: 0px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 670px) {
+  .selects-mob {
+    display: flex;
+  }
+}

@@ -1,0 +1,46 @@
+/*
+ * Loader.css
+ * Стили для компонента загрузки
+ */
+
+.loader-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: #000; 
+  color: white;
+  z-index: 9999;
+}
+
+.loader-logo {
+  width: 200px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.progress-bar {
+  width: 200px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(to right, #066fdfe7, #00c9f1f1);
+  animation: loading 0.6s ease-out;
+  transform-origin: left;
+}
+
+@keyframes loading {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}

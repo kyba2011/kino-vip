@@ -1,0 +1,10 @@
+.fav {
+  margin: 10px 70px 34px 80px;
+  padding: 30px 35px;
+}
+
+@media (max-width: 680px) {
+  .fav {
+    margin: 30px 20px 34px 20px;
+  }
+}
