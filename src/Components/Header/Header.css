@@ -196,6 +196,22 @@ header {
     .left {
         margin-right: 50px;
     }
+    .logo {
+        display: inline-block;
+    }
+    .m-logo{
+        display: none;
+    }
+}
+
+@media (max-width: 560px) {
+    .logo {
+        display: none
+    }
+
+    .m-logo {
+        display: inline-block;
+    }
 }
 
 @media (max-width: 400px) {
