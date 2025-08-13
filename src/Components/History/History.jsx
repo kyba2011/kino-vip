@@ -45,8 +45,7 @@ function History() {
               <button 
                 className="triangle-btn" 
                 onClick={(e) => removeFromHistory(e, film.kinopoiskId)}
-                title="Удалить из истории"
-              >
+                title="Удалить из истории">
                 <FaXmark className='x-icon'/>
               </button>
             </div>
