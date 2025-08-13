@@ -16,7 +16,15 @@ function History() {
     return () => window.removeEventListener('storage', onStorage);
   }, []);
 
-  
+  // Функция удаления фильма из истории
+  const removeFromHistory = (e, filmId) => {
+    e.preventDefault(); 
+    e.stopPropagation(); 
+    
+    const updatedHistory = history.filter(film => film.kinopoiskId !== filmId);
+    setHistory(updatedHistory);
+    localStorage.setItem('history', JSON.stringify(updatedHistory));
+  };
 
   return (
     <div className="history" id="history" >
@@ -34,7 +42,13 @@ function History() {
                     : '0.0'
                 }<span><IoIosStar /></span></p>
               </div>
-              <button class="triangle-btn"><FaXmark className='x-icon'/></button>
+              <button 
+                className="triangle-btn" 
+                onClick={(e) => removeFromHistory(e, film.kinopoiskId)}
+                title="Удалить из истории"
+              >
+                <FaXmark className='x-icon'/>
+              </button>
             </div>
           </Link>
         ))}
