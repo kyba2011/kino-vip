@@ -168,6 +168,16 @@ header,
   .text-movie p {
     font-size: 16px;
     max-width: 250px;
-  } 
+  }
 }
 
+
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button,
+a {
+  outline: none;
+}
