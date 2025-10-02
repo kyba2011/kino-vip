@@ -1,6 +1,7 @@
 import React from 'react'
 import './Home.css'
 import Rec from '../Rec/Rec'
+import History from '../History/History'
 function Home() {
   return (
     <div className="home">
@@ -14,6 +15,7 @@ function Home() {
         />
       </div>
       <Rec />
+      <History />
     </div>
   )
 }

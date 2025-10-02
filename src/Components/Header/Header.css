@@ -3,7 +3,7 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 25px 70px;
+    padding: 25px 60px 25px 0px;
     max-width: 2560px;
     width: 100%;
     position: fixed;
@@ -14,7 +14,7 @@ header {
     gap: 20px;
 }
 
-.left{
+.left {
     display: flex;
     align-items: center;
     gap: 20px;
@@ -32,7 +32,7 @@ header {
     margin-right: 50px;
 }
 
-.m-logo{
+.m-logo {
     display: none;
     width: 23px;
 
@@ -49,12 +49,16 @@ header {
     justify-content: space-between;
     padding: 0 10px;
     margin: 0 50px;
+    transition: background 0.3s;   
 }
 
-
+.input-search:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
 
 .input-search input {
     width: 95%;
+    height: 100%;
     border: none;
     background: transparent;
     color: white;
@@ -73,7 +77,8 @@ header {
 .input-search button:hover {
     background-color: rgba(255, 255, 255, 0.094);
 }
-.selects{
+
+.selects {
     display: flex;
     align-items: center;
     gap: 15px;
@@ -96,6 +101,13 @@ header {
     background-repeat: no-repeat;
     background-position: right 8px center;
     background-size: 14px;
+    transition: background 0.3s;
+    cursor: pointer;
+}
+
+
+.select:hover {
+    background-color: rgba(255, 255, 255, 0.094);
 }
 
 
@@ -106,6 +118,42 @@ header {
     color: white;
 }
 
+.player-back {
+    width: 90px;
+    height: 40px;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    background: rgba(0, 0, 0, 0.202);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    transition: background 0.3s;
+    cursor: pointer;
+    
+}
+
+.player-back:hover {
+    background: rgba(255, 255, 255, 0.1);
+} 
+
+.back-arrow {
+    line-height: 1;
+    margin-top: 3px;
+}
+
+@media (max-width: 890px) {
+   .back-text {
+       display: none;
+       
+   }
+   .player-back {
+       width: 40px;
+       height: 40px;
+       border-radius: 50%;
+   }
+}
 
 @media (max-width: 1363px) {
     .logo {
@@ -113,7 +161,7 @@ header {
         margin-right: 30px;
     }
 
-    
+
 
     .input-search {
         width: 500px;
@@ -130,14 +178,14 @@ header {
 
     }
 
-    
+
 }
 
 @media (max-width: 1178px) {
     .input-search {
         width: 400px;
     }
-    
+
 }
 
 @media (max-width: 1136px) {
@@ -156,50 +204,46 @@ header {
         width: 145px;
         margin-right: 20px;
     }
-    
+
 }
 
 @media (max-width: 920px) {
-    .selects{
+    .selects {
         gap: 5px;
     }
 }
 
-@media (max-width: 900px){
-    
-}
+@media (max-width: 900px) {}
 
 @media (max-width: 882px) {
     .logo {
         display: none;
     }
+
     .m-logo {
         display: inline-block;
-        
-    }
-}
 
-@media (max-width: 800px) {
-    .input-search {
-        width: 100%;
-        margin: 0;
     }
 }
 
 
 
-@media (max-width: 670px) {
+
+@media (max-width: 760px) {
 
     .selects {
         display: none;
     }
+
     .left {
         margin-right: 50px;
     }
+
     .logo {
         display: inline-block;
     }
-    .m-logo{
+
+    .m-logo {
         display: none;
     }
 }
@@ -214,8 +258,8 @@ header {
     }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 510px) {
     header {
-        padding: 25px 70px 25px 20px;
+        padding: 15px 30px 15px 30px;
     }
 }

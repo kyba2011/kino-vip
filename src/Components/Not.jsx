@@ -11,7 +11,7 @@ function Not() {
         {
           `@media (max-width: 1104px) {
             .div {
-              height: 80px;
+              height: 90px;
 
             }
           }`

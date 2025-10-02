@@ -3,6 +3,7 @@ import './History.css';
 import { IoIosStar } from "react-icons/io";
 import { Link } from 'react-router-dom';
 import { FaXmark } from "react-icons/fa6";
+import Not from '../Not';
 
 function History() {
   const [history, setHistory] = useState([]);
@@ -28,6 +29,7 @@ function History() {
 
   return (
     <div className="history" id="history" >
+      <Not />
       <h2>История просмотров</h2>
       <div className="cards-movie history-scroll">
         {history.map(film => (
@@ -52,6 +54,7 @@ function History() {
           </Link>
         ))}
       </div>
+      <Not />
     </div>
   );
 }

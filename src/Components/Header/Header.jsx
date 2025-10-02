@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import './Header.css';
 import { FaSearch } from "react-icons/fa";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { FaArrowLeft } from "react-icons/fa";
 
 function Header({
   genres = [],
@@ -13,6 +14,11 @@ function Header({
 }) {
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
+
+  // Показывать кнопку только на about/:id и player/:id
+  const showBack = /^\/about\/[\w-]+$/.test(location.pathname) || /^\/player\/[\w-]+$/.test(location.pathname) || /^\/watch\/[\w-]+$/.test(location.pathname);
+  const handleBack = () => navigate(-1);
 
   const handleInput = (e) => setSearch(e.target.value);
   const handleSearch = (e) => {
@@ -24,7 +30,13 @@ function Header({
 
   return (
     <header>
-      <Link to={'/'}><img src="/logo.png" alt="" className='logo' /><img src="/mobile.png" alt="" className='m-logo' /></Link>
+      {showBack ? (
+        <button className="player-back" onClick={handleBack} >
+          <span className="back-arrow"><FaArrowLeft /></span> <span className="back-text">Назад</span>
+        </button>
+      ) : (
+        <Link to={'/'}><img src="/logo.png" alt="" className='logo' /><img src="/mobile.png" alt="" className='m-logo' /></Link>
+      )}
       <form className="input-search" onSubmit={handleSearch}>
         <input
           type="text"
@@ -34,7 +46,6 @@ function Header({
         />
         <button className='search-btn' type="submit"><FaSearch /></button>
       </form>
-
 
       <div className="selects">
         <select

@@ -39,7 +39,9 @@ function Fav() {
                 </div>
 
             )}
+            <Not />
         </div>
+        
     );
 }
 

@@ -47,7 +47,7 @@ function Layout() {
           
           <Outlet context={{ hidden }}/>
           
-          <History />
+          
           <div className={hidden ? "panel-hidden" : ""}>
             <Panel />
           </div>

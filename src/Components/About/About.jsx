@@ -5,7 +5,8 @@
 import React, { useEffect, useState } from 'react';
 import { IoIosStar } from "react-icons/io";
 import './About.css';
-import { useParams } from 'react-router-dom';
+import '../Player/Player.css';
+import { useParams, useNavigate } from 'react-router-dom';
 import { FaRegBookmark, FaBookmark } from "react-icons/fa";
 import Not from '../Not';
 import Toast from './Toast';
@@ -14,6 +15,7 @@ const API_KEY = '851ad9e5-8041-4065-9b1c-1e9948b7ebac';
 
 function About() {
     const { id } = useParams();
+    const navigate = useNavigate();
     const [movie, setMovie] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -32,25 +34,66 @@ function About() {
                 return;
             } catch { }
         }
-        fetch(`https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}`, {
-            headers: {
-                'X-API-KEY': '851ad9e5-8041-4065-9b1c-1e9948b7ebac',
-                'Content-Type': 'application/json',
+
+        
+        const apis = [
+            {
+                url: `https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}`,
+                headers: {
+                    'X-API-KEY': '851ad9e5-8041-4065-9b1c-1e9948b7ebac',
+                    'Content-Type': 'application/json',
+                }
             },
-        })
-            .then(res => {
-                if (!res.ok) throw new Error('Ошибка загрузки');
-                return res.json();
-            })
-            .then(data => {
-                setMovie(data);
-                localStorage.setItem(cacheKey, JSON.stringify(data));
-                setLoading(false);
-            })
-            .catch(err => {
-                setError(err.message);
-                setLoading(false);
-            });
+            {
+                url: `https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}`,
+                headers: {
+                    'X-API-KEY': '24de35a5-1338-4bfd-a607-290a9ff9e450', 
+                    'Content-Type': 'application/json',
+                }
+            },
+           
+            {
+                url: `https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}`,
+                headers: {
+                    'X-API-KEY': '246e66a2-dbd0-4924-96c7-d78b996e7c60',
+                    'Content-Type': 'application/json',
+                }
+            },
+            {
+                url: `https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}`,
+                headers: {
+                    'X-API-KEY': '123fa0e0-c556-48aa-b69b-d958d1d052e4',
+                    'Content-Type': 'application/json',
+                }
+            },
+            {
+                url: `https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}`,
+                headers: {
+                    'X-API-KEY': '31bf3fdc-d4cb-41ae-abf1-72636617caa3',
+                    'Content-Type': 'application/json',
+                }
+            },
+            
+        ];
+
+        (async () => {
+            let lastError = null;
+            for (const api of apis) {
+                try {
+                    const res = await fetch(api.url, { headers: api.headers });
+                    if (!res.ok) throw new Error('Ошибка загрузки');
+                    const data = await res.json();
+                    setMovie(data);
+                    localStorage.setItem(cacheKey, JSON.stringify(data));
+                    setLoading(false);
+                    return;
+                } catch (err) {
+                    lastError = err;
+                }
+            }
+            setError(lastError ? lastError.message : 'Не удалось загрузить данные');
+            setLoading(false);
+        })();
     }, [id]);
 
     useEffect(() => {
@@ -101,13 +144,12 @@ function About() {
             history.unshift(film);
             localStorage.setItem('history', JSON.stringify(history.slice(0, 30)));
         }
-        setTimeout(() => {
-            window.location.assign(`https://flcksbr.top/series/${movie.kinopoiskId}/`);
-        }, 100);
+        navigate(`/watch/${movie.kinopoiskId}`);
     };
 
     return (
         <div className='aboutPage' >
+            
             <Not />
             <Toast 
                 message={toast.message} 
@@ -156,6 +198,7 @@ function About() {
                         : '0.0'
                 }<span className='raiting-span'><IoIosStar /></span></p>
             </div>
+            <Not />
         </div>
     );
 }

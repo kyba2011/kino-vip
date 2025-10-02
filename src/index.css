@@ -9,7 +9,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: Poppins, sans-serif;
-
+  
 }
 
 body {
@@ -115,9 +115,10 @@ a {
   position: fixed;
   top: 28px;
   right: 28px;
-  z-index: 10000;
-  transition: transform 0.3s;
+  z-index: 100;
+  backdrop-filter: blur(10px);
 }
+
 
 
 
@@ -146,6 +147,10 @@ header,
 @media (max-width: 890px) {
   .cards-movie {
     margin: auto;
+  }
+
+  .hide-btn {
+    display: none;
   }
 
 }

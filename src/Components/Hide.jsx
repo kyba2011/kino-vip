@@ -9,7 +9,7 @@ function Hide({ hidden, setHidden }) {
         onClick={() => setHidden(h => !h)}
         style={{
           transform: hidden ? 'rotate(180deg)' : 'rotate(0deg)',
-          transition: 'transform 0.3s'
+          transition: 'all 0.3s'
         }}
         aria-label="Скрыть/показать панель и хедер"
       >

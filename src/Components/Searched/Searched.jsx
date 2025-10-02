@@ -9,6 +9,7 @@ import './Searched.css';
 import { Link, useLocation } from 'react-router-dom';
 import Header from "../Header/Header";
 import Not from '../Not';
+import History from '../History/History';
 
 const API_KEY = '851ad9e5-8041-4065-9b1c-1e9948b7ebac';
 
@@ -148,7 +149,10 @@ function Searched() {
             </div>
           </div>
         )}
+        
       </div>
+      <History />
+      <Not />
     </>
   );
 }

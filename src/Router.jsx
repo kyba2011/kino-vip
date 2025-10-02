@@ -6,6 +6,7 @@ import Searched from "./Components/Searched/Searched";
 import Not from "./Components/Not";
 import About from "./Components/About/About";
 import Fav from "./Components/Fav/Fav";
+import Player from "./Components/Player/Player";
 
 export const router = createBrowserRouter([
   {
@@ -18,7 +19,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "history",
-        element: <Not />,
+        element: <History />,
       },
       {
         path: "searched",
@@ -31,7 +32,12 @@ export const router = createBrowserRouter([
       {
         path: "fav",
         element: <Fav />,
+      },
+      {
+        path: 'watch/:id',
+        element: <Player />
       }
+
     ],
   },
 ]);
