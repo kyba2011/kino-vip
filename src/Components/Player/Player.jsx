@@ -21,26 +21,33 @@ function Player() {
                 return;
             } catch { }
         }
-        fetch(`https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}`,
-            {
-                headers: {
-                    'X-API-KEY': '851ad9e5-8041-4065-9b1c-1e9948b7ebac',
-                    'Content-Type': 'application/json',
+        (async () => {
+            const API_KEYS = [
+                '851ad9e5-8041-4065-9b1c-1e9948b7ebac',
+                '24de35a5-1338-4bfd-a607-290a9ff9e450',
+                '246e66a2-dbd0-4924-96c7-d78b996e7c60',
+                '123fa0e0-c556-48aa-b69b-d958d1d052e4',
+                '31bf3fdc-d4cb-41ae-abf1-72636617caa3'
+            ];
+            let lastErr = null;
+            for (const key of API_KEYS) {
+                try {
+                    const res = await fetch(`https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}`, {
+                        headers: { 'X-API-KEY': key, 'Content-Type': 'application/json' }
+                    });
+                    if (!res.ok) throw new Error('Ошибка загрузки');
+                    const data = await res.json();
+                    setMovie(data);
+                    localStorage.setItem(cacheKey, JSON.stringify(data));
+                    setLoading(false);
+                    return;
+                } catch (e) {
+                    lastErr = e;
                 }
-            })
-            .then(res => {
-                if (!res.ok) throw new Error('Ошибка загрузки');
-                return res.json();
-            })
-            .then(data => {
-                setMovie(data);
-                localStorage.setItem(cacheKey, JSON.stringify(data));
-                setLoading(false);
-            })
-            .catch(err => {
-                setError(err.message);
-                setLoading(false);
-            });
+            }
+            setError(lastErr ? lastErr.message : 'Не удалось загрузить данные');
+            setLoading(false);
+        })();
     }, [id]);
 
     if (loading) return <div className="player-page"><p>Загрузка...</p></div>;

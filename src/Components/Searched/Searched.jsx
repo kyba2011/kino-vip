@@ -34,36 +34,46 @@ function Searched() {
     setLoading(true);
     setError(null);
 
-    fetch(`https://kinopoiskapiunofficial.tech/api/v2.1/films/search-by-keyword?keyword=${encodeURIComponent(query)}&page=1`, {
-      headers: {
-        'X-API-KEY': API_KEY,
-        'Content-Type': 'application/json',
-      },
-    })
-      .then(res => {
-        if (!res.ok) throw new Error('Ошибка поиска: ' + res.status);
-        return res.json();
-      })
-      .then(data => {
-        const films = data.films || [];
-        setResults(films);
+    const API_KEYS = [
+      '851ad9e5-8041-4065-9b1c-1e9948b7ebac',
+      '24de35a5-1338-4bfd-a607-290a9ff9e450',
+      '246e66a2-dbd0-4924-96c7-d78b996e7c60',
+      '123fa0e0-c556-48aa-b69b-d958d1d052e4',
+      '31bf3fdc-d4cb-41ae-abf1-72636617caa3'
+    ];
 
-        // Получаем уникальные жанры и страны
-        const genresSet = new Set();
-        const countriesSet = new Set();
-        films.forEach(film => {
-          film.genres?.forEach(g => genresSet.add(g.genre));
-          film.countries?.forEach(c => countriesSet.add(c.country));
-        });
+    (async () => {
+      let lastErr = null;
+      const url = `https://kinopoiskapiunofficial.tech/api/v2.1/films/search-by-keyword?keyword=${encodeURIComponent(query)}&page=1`;
+      for (const key of API_KEYS) {
+        try {
+          const res = await fetch(url, {
+            headers: { 'X-API-KEY': key, 'Content-Type': 'application/json' }
+          });
+          if (!res.ok) throw new Error('Ошибка поиска: ' + res.status);
+          const data = await res.json();
+          const films = data.films || [];
+          setResults(films);
 
-        setGenres([...genresSet]);
-        setCountries([...countriesSet]);
-        setLoading(false);
-      })
-      .catch(err => {
-        setError('Сетевая или CORS ошибка: ' + err.message);
-        setLoading(false);
-      });
+          // Получаем уникальные жанры и страны
+          const genresSet = new Set();
+          const countriesSet = new Set();
+          films.forEach(film => {
+            film.genres?.forEach(g => genresSet.add(g.genre));
+            film.countries?.forEach(c => countriesSet.add(c.country));
+          });
+
+          setGenres([...genresSet]);
+          setCountries([...countriesSet]);
+          setLoading(false);
+          return;
+        } catch (err) {
+          lastErr = err;
+        }
+      }
+      setError('Сетевая или CORS ошибка: ' + (lastErr ? lastErr.message : 'Не удалось получить данные'));
+      setLoading(false);
+    })();
   }, [query]);
 
   const filteredResults = results.filter(film => {

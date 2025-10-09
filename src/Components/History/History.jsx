@@ -37,7 +37,7 @@ function History() {
             <div className="card-movie">
               <img src={film.posterUrl || "/image.png"} alt={film.nameRu || film.nameOriginal || 'Movie'} />
               <div className="text-movie">
-                <h3 className='elellipsis-list'>{film.nameRu || film.nameOriginal || '-'}</h3>
+                <h3 className='movie-title-ellipsis'>{film.nameRu || film.nameOriginal || '-'}</h3>
                 <p className='raiting-min'>{
                   film.ratingKinopoisk !== undefined && film.ratingKinopoisk !== null
                     ? Number(film.ratingKinopoisk).toFixed(1)

@@ -39,16 +39,31 @@ function Rec() {
                             } catch {}
                         }
                         
-                        const res = await fetch(`https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}`, {
-                            headers: {
-                                'X-API-KEY': '851ad9e5-8041-4065-9b1c-1e9948b7ebac',
-                                'Content-Type': 'application/json',
-                            },
-                        });
-                        if (!res.ok) return null;
-                        const data = await res.json();
-                        localStorage.setItem(cacheKey, JSON.stringify(data));
-                        return data;
+                        const API_KEYS = [
+                            '851ad9e5-8041-4065-9b1c-1e9948b7ebac',
+                            '24de35a5-1338-4bfd-a607-290a9ff9e450',
+                            '246e66a2-dbd0-4924-96c7-d78b996e7c60',
+                            '123fa0e0-c556-48aa-b69b-d958d1d052e4',
+                            '31bf3fdc-d4cb-41ae-abf1-72636617caa3'
+                        ];
+                        let lastErr = null;
+                        for (const key of API_KEYS) {
+                            try {
+                                const res = await fetch(`https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}`, {
+                                    headers: {
+                                        'X-API-KEY': key,
+                                        'Content-Type': 'application/json',
+                                    },
+                                });
+                                if (!res.ok) throw new Error('Ошибка загрузки');
+                                const data = await res.json();
+                                localStorage.setItem(cacheKey, JSON.stringify(data));
+                                return data;
+                            } catch (e) {
+                                lastErr = e;
+                            }
+                        }
+                        return null;
                     })
                 );
                 setFilms(results.filter(Boolean));
